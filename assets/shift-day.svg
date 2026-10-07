@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" role="img" aria-labelledby="t d" font-family="Geist, 'Segoe UI', system-ui, sans-serif">
+  <title id="t">The personal day across three shifts</title>
+  <desc id="d">Three bars show a waking day on an early shift, an afternoon shift and an overnight shift. Each personal day runs from waking to sleeping, so on the overnight shift it crosses midnight.</desc>
+  <rect width="640" height="300" rx="24" fill="#2f2b2f"/>
+  <g font-size="11" fill="#a59a93" text-anchor="middle">
+    <text x="120" y="40">06:00</text><text x="240" y="40">12:00</text><text x="360" y="40">18:00</text><text x="480" y="40">00:00</text><text x="600" y="40">06:00</text>
+  </g>
+  <g stroke="rgba(236,229,222,.09)"><line x1="120" y1="50" x2="120" y2="250"/><line x1="240" y1="50" x2="240" y2="250"/><line x1="360" y1="50" x2="360" y2="250"/><line x1="480" y1="50" x2="480" y2="250" stroke="rgba(236,229,222,.25)" stroke-dasharray="3 4"/><line x1="600" y1="50" x2="600" y2="250"/></g>
+  <g font-size="12.5">
+    <text x="16" y="94" fill="#c8beb6">Early</text>
+    <rect x="100" y="76" width="340" height="28" rx="14" fill="#383338"/>
+    <rect x="130" y="76" width="180" height="28" rx="14" fill="#474e5c"/><text x="220" y="95" text-anchor="middle" fill="#dfe4ee">work</text>
+    <text x="16" y="164" fill="#c8beb6">Afternoon</text>
+    <rect x="150" y="146" width="380" height="28" rx="14" fill="#383338"/>
+    <rect x="270" y="146" width="180" height="28" rx="14" fill="#474e5c"/><text x="360" y="165" text-anchor="middle" fill="#dfe4ee">work</text>
+    <text x="16" y="234" fill="#c8beb6">Overnight</text>
+    <rect x="300" y="216" width="320" height="28" rx="14" fill="#383338"/>
+    <rect x="440" y="216" width="180" height="28" rx="14" fill="#544a57"/><text x="530" y="235" text-anchor="middle" fill="#e8ddea">work</text>
+  </g>
+  <text x="480" y="276" text-anchor="middle" fill="#a59a93" font-size="11.5">midnight doesn't end the personal day</text>
+</svg>

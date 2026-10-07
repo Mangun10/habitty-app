@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 470" role="img" aria-labelledby="t d" font-family="Geist, 'Segoe UI', system-ui, sans-serif">
+  <title id="t">Future context, a generic example</title>
+  <desc id="d">An upcoming race, current training, the shift pattern, recovery and a linked goal are combined into context-aware preparation.</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#a59a93"/></marker></defs>
+  <rect width="640" height="470" rx="24" fill="#2f2b2f"/>
+  <!-- timeline -->
+  <line x1="56" y1="96" x2="584" y2="96" stroke="rgba(236,229,222,.18)" stroke-width="2"/>
+  <circle cx="96" cy="96" r="7" fill="#ece5de"/><text x="96" y="70" text-anchor="middle" fill="#ece5de" font-size="12.5">Today</text>
+  <g fill="#474e5c"><rect x="150" y="90" width="60" height="12" rx="6"/><rect x="236" y="90" width="60" height="12" rx="6"/><rect x="420" y="90" width="90" height="12" rx="6" fill="#544a57"/></g>
+  <text x="223" y="128" text-anchor="middle" fill="#a59a93" font-size="11.5">shifts</text>
+  <text x="465" y="128" text-anchor="middle" fill="#a59a93" font-size="11.5">night shifts before the event</text>
+  <circle cx="556" cy="96" r="10" fill="#e2c095"/><text x="556" y="70" text-anchor="middle" fill="#e2c095" font-size="12.5">Race</text>
+  <text x="326" y="70" text-anchor="middle" fill="#a59a93" font-size="12">in 26 days</text>
+  <!-- inputs -->
+  <g font-size="13.5" text-anchor="middle">
+    <rect x="40" y="168" width="176" height="52" rx="14" fill="#3c352c" stroke="#e2c095" stroke-opacity=".5"/><text x="128" y="199" fill="#e2c095">Upcoming event</text>
+    <rect x="232" y="168" width="176" height="52" rx="14" fill="#2f3a33" stroke="#4a5d50"/><text x="320" y="199" fill="#d8e9dd">Current training</text>
+    <rect x="424" y="168" width="176" height="52" rx="14" fill="#30343c" stroke="#474e5c"/><text x="512" y="199" fill="#dfe4ee">Shift pattern</text>
+    <rect x="136" y="234" width="176" height="52" rx="14" fill="#313733" stroke="#465049"/><text x="224" y="265" fill="#dbe5de">Sleep &amp; recovery</text>
+    <rect x="328" y="234" width="176" height="52" rx="14" fill="#363039" stroke="#544a57"/><text x="416" y="265" fill="#e8ddea">Linked goal</text>
+  </g>
+  <path d="M320 294v34" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="332" y="316" fill="#a59a93" font-size="11.5">facts calculated by the app</text>
+  <rect x="120" y="336" width="400" height="80" rx="20" fill="#3d3234" stroke="#d6b3aa" stroke-opacity=".6"/>
+  <text x="320" y="370" text-anchor="middle" fill="#ece5de" font-size="18" font-family="Newsreader, Georgia, serif">Context-aware preparation</text>
+  <text x="320" y="396" text-anchor="middle" fill="#c8beb6" font-size="12.5">"Prepare me for this" · facts and interpretation labelled</text>
+  <text x="40" y="446" fill="#a59a93" font-size="12">Generic example — not real personal data.</text>
+</svg>

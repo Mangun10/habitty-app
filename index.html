@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Habitty — Case study</title>
+  <meta name="description" content="Habitty: a shift-aware personal operating system with context-aware AI. A product design, product engineering and AI systems case study." />
+  <meta name="theme-color" content="#262326" />
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Habitty case study, back to top">
+      <img src="assets/mark.svg" alt="" width="22" height="22" /> Habitty
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Contents</button>
+    <nav id="site-nav" class="nav" aria-label="Sections">
+      <a href="#idea">Idea</a>
+      <a href="#model">Product</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#ai">AI</a>
+      <a href="#decisions">Decision Tree</a>
+      <a href="#future">Future</a>
+      <a href="#engineering">Engineering</a>
+      <a href="#learned">Learnings</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <p class="eyebrow">Case study · Product design · Product engineering · AI systems</p>
+      <h1 id="hero-title" class="hero-title">Habitty</h1>
+      <p class="hero-statement">A personal operating system that helps you become more capable without losing sight of the life you're becoming capable for.</p>
+      <p class="hero-copy">A calm, mobile-first web app for a life on rotating shifts. It plans each day around the real shift and the real sleep, keeps everything as structured data, and brings in AI only when context makes it genuinely useful.</p>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Sole designer &amp; engineer</dd></div>
+        <div><dt>Scope</dt><dd>Product, UX, design system, full-stack, AI architecture, testing</dd></div>
+        <div><dt>Stack</dt><dd>Next.js · React · TypeScript · Firebase · Groq · Gemini · local embeddings</dd></div>
+        <div><dt>Status</dt><dd>Built and in daily personal use · private, single-owner</dd></div>
+      </dl>
+      <figure class="hero-figure">
+        <div class="phone" aria-hidden="true">
+          <div class="phone-top"><span>Today · Tue</span><span class="chip">US · 10:00 PM – 7:00 AM</span></div>
+          <p class="phone-greet">Good evening.</p>
+          <p class="phone-sub">Your night shift starts in about four hours, so focus on eating and moving now.</p>
+          <p class="phone-label">Right now</p>
+          <p class="phone-now">Eat a balanced meal</p>
+          <p class="phone-label">Next</p>
+          <ol class="phone-steps"><li>Eat dinner</li><li>Take a walk</li><li>Get daylight</li></ol>
+          <p class="phone-label">Coming up</p>
+          <p class="phone-event"><span class="dot dot-clay"></span>5K race <em>in 26 days</em></p>
+        </div>
+        <figcaption>Illustration of the Today briefing's structure (recreated, not a screenshot; no personal data).</figcaption>
+      </figure>
+    </section>
+
+    <!-- IDEA -->
+    <section class="section" id="idea" aria-labelledby="idea-title">
+      <p class="kicker">01 · The idea</p>
+      <h2 id="idea-title">From habit tracker to personal operating system</h2>
+      <div class="evolution" role="img" aria-label="Evolution from a habit tracker to a personal operating system">
+        <div class="evo evo-from"><span class="evo-label">Habit tracker</span><span>Did I do it?</span></div>
+        <div class="evo-arrow" aria-hidden="true"></div>
+        <div class="evo evo-to"><span class="evo-label">Personal operating system</span><span>What should I do now, and why?</span></div>
+      </div>
+      <div class="two-col">
+        <p>Habitty started as a way to track six habits. It quickly ran into a real constraint: <strong>rotating shifts</strong>. An early week, an afternoon week, an overnight week, with transition days in between. Streaks punished exactly the days when protecting sleep mattered most, and "today" at 2 a.m. was still the evening before.</p>
+        <p>Tracking answers only <em>what happened</em>. The questions that matter during a day are different, so the product grew into a system that understands where you are, what has happened, what is changing, where you're going, what is coming, and what you have already decided.</p>
+      </div>
+      <ul class="questions" aria-label="What Habitty tries to understand">
+        <li>What is happening <em>now</em></li>
+        <li>What <em>has</em> happened</li>
+        <li>What is <em>changing</em></li>
+        <li>Where you're <em>going</em></li>
+        <li>What is <em>coming</em></li>
+        <li>What you've already <em>decided</em></li>
+      </ul>
+      <figure class="figure">
+        <img src="assets/shift-day.svg" alt="Three timelines show the waking day on early, afternoon and overnight shifts. On the overnight shift the personal day crosses midnight." width="640" height="300" loading="lazy" />
+        <figcaption>The <strong>personal day</strong> runs from waking to sleeping, not midnight to midnight. Plans, meals and supplements follow it.</figcaption>
+      </figure>
+    </section>
+
+    <!-- PRODUCT MODEL -->
+    <section class="section" id="model" aria-labelledby="model-title">
+      <p class="kicker">02 · Product model</p>
+      <h2 id="model-title">Six questions, one system</h2>
+      <p class="lede">Every screen answers one question. Anything that couldn't attach to one of them was folded in or left out.</p>
+      <div class="timeaxis" aria-hidden="true"><span>Past</span><span>Present</span><span>Future</span></div>
+      <ol class="model">
+        <li class="m m-snapshot"><span class="m-name">Snapshot</span><span class="m-q">What actually happened?</span><span class="m-note">One daily capture. Reuses what's already logged; adds emotions, screen time, a good thing.</span></li>
+        <li class="m m-progress"><span class="m-name">Progress</span><span class="m-q">What is changing?</span><span class="m-note">Trends by area, from the same records. No scores.</span></li>
+        <li class="m m-today"><span class="m-name">Today</span><span class="m-q">What should I do now?</span><span class="m-note">A briefing built by rules that understand the shift and the personal day.</span></li>
+        <li class="m m-goals"><span class="m-name">Goals</span><span class="m-q">Where am I going?</span><span class="m-note">Goals by life area, with milestones and the habits that move them.</span></li>
+        <li class="m m-calendar"><span class="m-name">Calendar</span><span class="m-q">What is coming?</span><span class="m-note">Upcoming events, as context. Lives behind Today's date.</span></li>
+        <li class="m m-coach"><span class="m-name">Coach</span><span class="m-q">What does it mean, and what next?</span><span class="m-note">Context-aware AI, only when asked.</span></li>
+      </ol>
+      <p class="small">Around them: Values, the Decision Tree, a week in review, personal reports, a meditation timer and a shift planner.</p>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="section" id="philosophy" aria-labelledby="philosophy-title">
+      <p class="kicker">03 · Design philosophy</p>
+      <h2 id="philosophy-title">AI that understands you when you need it, not AI that keeps analysing you</h2>
+      <div class="principles">
+        <article><h3>Structure without rigidity</h3><p>Every habit has a minimum, target and stretch. The minimum counts fully. Hard days lower the bar automatically, with a stated reason.</p></article>
+        <article><h3>Guidance before tracking</h3><p>Today leads with one sentence for right now and a few next steps. Logging is one tap away, but direction comes first.</p></article>
+        <article><h3>Capability over streaks</h3><p>No streaks to protect. Consistency is measured over weeks, and missing a workout after a night shift isn't failure.</p></article>
+        <article><h3>Context, not isolated data</h3><p>Sleep, meals, training, tasks, goals, decisions and events are connected through one context builder.</p></article>
+        <article><h3>Complexity behind, simplicity in front</h3><p>Shift resolution, timing rules, relevance gating and rate limiting are invisible. The page stays calm.</p></article>
+        <article><h3>Reflection without scores</h3><p>Emotions are words, not numbers. Progress shows change, never a grade.</p></article>
+      </div>
+      <div class="palette" aria-label="The Habitty palette">
+        <div class="swatch s-bg"><span>Charcoal</span></div>
+        <div class="swatch s-ink"><span>Warm white</span></div>
+        <div class="swatch s-accent"><span>Clay rose</span></div>
+        <div class="swatch s-sage"><span>Sage</span></div>
+        <div class="swatch s-mauve"><span>Lavender</span></div>
+        <div class="swatch s-mist"><span>Mist</span></div>
+        <div class="swatch s-slate"><span>Slate</span></div>
+      </div>
+      <p class="small">A calm evening room: one warm dark theme, Newsreader for the editorial voice, Geist for the interface, colours only from design tokens.</p>
+    </section>
+
+    <!-- AI -->
+    <section class="section" id="ai" aria-labelledby="ai-title">
+      <p class="kicker">04 · AI architecture</p>
+      <h2 id="ai-title">The application owns the facts. The model interprets them.</h2>
+      <div class="split">
+        <figure class="figure">
+          <img src="assets/ai-architecture.svg" alt="Diagram: current situation, personal data, goals and values, historical patterns and future events feed a deterministic context builder, then retrieval, then interactive AI on Groq or background AI on Gemini, then validation, producing personalised guidance." width="640" height="860" loading="lazy" />
+        </figure>
+        <div class="stack">
+          <article class="card">
+            <h3>Interactive, on Groq</h3>
+            <p>The coach, Decision Tree interpretation, "Prepare me for this", the week in review and report reflections. Each runs only when the user asks, and is tuned for latency.</p>
+          </article>
+          <article class="card">
+            <h3>Background, on Gemini</h3>
+            <p>A weekly pattern reading and obvious deviations from the user's own baseline. At most one request per scheduled run, never repeated on unchanged data, and never retried on the interactive provider.</p>
+          </article>
+          <article class="card">
+            <h3>Relevance-gated context</h3>
+            <p>"Should I exercise now?" gets the current situation only. "Why do I keep worrying about my career?" also gets related past words and how often the concern came up. A race appears only in questions it actually affects.</p>
+          </article>
+          <article class="card">
+            <h3>Validated, labelled output</h3>
+            <p>Typed task contracts, schema validation and deterministic fallbacks. Every claim is labelled as fact, derived, observation, pattern, possible association or inference. Causal and diagnostic claims are rejected in code.</p>
+          </article>
+          <article class="card">
+            <h3>Semantic retrieval, locally</h3>
+            <p>A small embedding model runs on the server, so the user's own words can be retrieved by meaning without an external embedding API. Every semantic path has a timeout and a word-based fallback.</p>
+          </article>
+        </div>
+      </div>
+      <p class="callout">Opening any page makes zero AI requests. Averages, trends, plans, reminders, time zones and conflicts are code.</p>
+    </section>
+
+    <!-- DECISION TREE -->
+    <section class="section" id="decisions" aria-labelledby="dt-title">
+      <p class="kicker">05 · Decision Tree</p>
+      <h2 id="dt-title">No new information, no new analysis</h2>
+      <div class="split split-rev">
+        <div class="prose">
+          <p>Many worries aren't new. They come back and get argued from scratch every time. The Decision Tree records a worry together with what you decided, and what would count as new information.</p>
+          <p>Capturing one takes <strong>two inputs</strong>: <em>What am I worried about?</em> and <em>What am I going to do about it?</em> The model infers the rest and shows it back as "Here's how I understood this", with your words kept separate from its inferences. Every field can be corrected.</p>
+          <p>When the same worry returns in different words, it's found <strong>by meaning</strong>. If nothing has changed, the decision stands and no AI call is made.</p>
+          <p>Linking is deliberately conservative: at most one value and one goal, only with evidence quoted from your own words, and only if the action <em>directly</em> serves the goal. A wrong relationship is worse than none.</p>
+        </div>
+        <figure class="figure">
+          <img src="assets/decision-tree.svg" alt="Diagram: a worry leads to reasoning, a decision, an action and a note on what would count as new information. A later, differently worded version of the same worry is found by meaning; if nothing changed, the decision stands with no AI call." width="640" height="560" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- SNAPSHOT / PROGRESS -->
+    <section class="section" id="snapshot" aria-labelledby="sp-title">
+      <p class="kicker">06 · Snapshot &amp; Progress</p>
+      <h2 id="sp-title">Capture once, understand over time</h2>
+      <div class="flow" role="img" aria-label="Activity already logged, calendar events, emotions, metrics and reflection flow into one source of truth that feeds both Snapshot and Progress.">
+        <ul class="flow-in">
+          <li>Activity already logged on Today</li>
+          <li>Events that took place</li>
+          <li>Emotions, as words</li>
+          <li>Screen time, weight</li>
+          <li>One good thing</li>
+        </ul>
+        <div class="flow-core"><span>One source of truth</span><small>daily records · one metric registry</small></div>
+        <div class="flow-out">
+          <div><strong>Snapshot</strong><span>What actually happened</span></div>
+          <div><strong>Progress</strong><span>What is changing</span></div>
+        </div>
+      </div>
+      <p class="lede narrow">No duplicate logging: Snapshot reuses what Today already recorded, and a metric can belong to several areas without being stored twice. Unrecorded days are <em>unknown</em>, never "no". There are no productivity scores.</p>
+    </section>
+
+    <!-- FUTURE -->
+    <section class="section" id="future" aria-labelledby="future-title">
+      <p class="kicker">07 · Future context</p>
+      <h2 id="future-title">A personal system should know what's coming</h2>
+      <div class="split">
+        <figure class="figure">
+          <img src="assets/future-context.svg" alt="Diagram: an upcoming race, current training, the shift pattern, sleep and recovery and a linked goal combine into context-aware preparation. Generic example." width="640" height="470" loading="lazy" />
+        </figure>
+        <div class="prose">
+          <p>A race in four weeks changes how to train this week. An early event tomorrow changes whether to stay up tonight. The calendar exists for this, not to be another calendar app, so it lives behind Today's date rather than in the navigation.</p>
+          <p>Events are plain structured data: timed or all-day, with their own time zone, a muted colour, a type, an importance level and an optional goal. Conflicts with other events, work shifts (including last night's) and tasks are <strong>calculated, never guessed</strong>. Reminders are deterministic.</p>
+          <p><strong>"Prepare me for this"</strong> is one interactive request. The app supplies the event, the time until it, the shifts before it, recent training and sleep, and the linked goal. The model interprets these facts and labels what it says. Nothing is written back into the event.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENGINEERING -->
+    <section class="section" id="engineering" aria-labelledby="eng-title">
+      <p class="kicker">08 · Engineering</p>
+      <h2 id="eng-title">Chosen for the product, not for the résumé</h2>
+      <div class="tech">
+        <article><p class="tech-group">Frontend</p><h3>Next.js · React · TypeScript</h3><p>Strict types across a large domain model; one codebase for UI and server routes.</p></article>
+        <article><p class="tech-group">Design</p><h3>Tailwind CSS on design tokens</h3><p>Every colour is a token, so the calm palette stays consistent across UI, charts and event colours.</p></article>
+        <article><p class="tech-group">Visualisation</p><h3>Recharts</h3><p>Restrained trend and comparison charts, each with a table view and an explicit "not enough data yet" state.</p></article>
+        <article><p class="tech-group">Database</p><h3>Cloud Firestore</h3><p>Structured personal data with server-enforced access control, offline support, and a natural fit for an evolving data model.</p></article>
+        <article><p class="tech-group">Authentication</p><h3>Firebase Authentication</h3><p>Google sign-in, restricted to one verified owner. A private tool should behave like one.</p></article>
+        <article><p class="tech-group">Validation</p><h3>Zod</h3><p>One schema language for stored documents, forms and AI output. Anything that crosses a boundary is checked.</p></article>
+        <article><p class="tech-group">Interactive AI</p><h3>Groq</h3><p>Fast inference for answers the user is waiting on.</p></article>
+        <article><p class="tech-group">Background AI</p><h3>Google Gemini</h3><p>Room for broad context in scheduled analysis, with its own quota, separate from interactive capacity.</p></article>
+        <article><p class="tech-group">Semantic retrieval</p><h3>Transformers.js · ONNX Runtime</h3><p>A small, quantised embedding model on the server. No external embedding API, with graceful fallbacks.</p></article>
+        <article><p class="tech-group">Deployment</p><h3>Vercel · PWA</h3><p>Server routes for AI and a daily scheduled job; installable on a phone, with local reminders.</p></article>
+        <article><p class="tech-group">Testing</p><h3>Vitest · 500+ tests</h3><p>Shift and time-zone logic, AI contracts and fallbacks, privacy, rate limiting under concurrency, and "no AI here" guarantees.</p></article>
+      </div>
+      <figure class="figure figure-narrow">
+        <img src="assets/system-architecture.svg" alt="Diagram: an installable Next.js and React app reads and writes structured data in Cloud Firestore with owner-only access. Server routes handle AI orchestration, a local embedding model, a shared AI budget and a daily scheduled job, and call Groq for interactive and Gemini for background AI." width="640" height="700" loading="lazy" />
+        <figcaption>High-level architecture. Security rules, schemas and infrastructure details are intentionally not shown.</figcaption>
+      </figure>
+    </section>
+
+    <!-- DECISIONS -->
+    <section class="section" id="choices" aria-labelledby="choices-title">
+      <p class="kicker">09 · Engineering decisions</p>
+      <h2 id="choices-title">Decision, why, trade-off</h2>
+      <div class="choices">
+        <details open><summary>Structured data is the source of truth</summary><dl><dt>Why</dt><dd>Facts must be exact, queryable and testable. AI output sits on top, with provenance.</dd><dt>Trade-off</dt><dd>More modelling up front; nothing a model says can corrupt the record.</dd></dl></details>
+        <details><summary>AI as interpretation, not authority</summary><dl><dt>Why</dt><dd>Models invent shifts, doses and dates. The app supplies every fact; the model labels what it adds.</dd><dt>Trade-off</dt><dd>More "not enough data yet" answers, and less confident fiction.</dd></dl></details>
+        <details><summary>Deterministic logic before LLM reasoning</summary><dl><dt>Why</dt><dd>Plans, day modes, supplement timing, trends, conflicts and reminders must be right every time.</dd><dt>Trade-off</dt><dd>Rules are designed explicitly, not delegated to a model.</dd></dl></details>
+        <details><summary>Local embeddings for retrieval</summary><dl><dt>Why</dt><dd>Meaning beats word overlap. Running the model on the server keeps retrieval private and dependency-light.</dd><dt>Trade-off</dt><dd>Cold starts take seconds, so every path has a timeout and a fallback. Shipping a native runtime to serverless needed explicit bundling.</dd></dl></details>
+        <details><summary>Separate interactive and background workloads</summary><dl><dt>Why</dt><dd>Latency for answers, depth for analysis. Background work can never block a question.</dd><dt>Trade-off</dt><dd>Two providers to run, routed through one function.</dd></dl></details>
+        <details><summary>Relevance-gated context</summary><dl><dt>Why</dt><dd>Less irrelevant context means better answers and fewer tokens.</dd><dt>Trade-off</dt><dd>Relevance rules need careful tuning and tests.</dd></dl></details>
+        <details><summary>A rate limit that survives serverless</summary><dl><dt>Why</dt><dd>Provider limits are per key, not per instance. A shared budget with optimistic concurrency enforces them. Calls reserve tokens, then settle to actual usage.</dd><dt>Trade-off</dt><dd>One small extra read and write per AI call.</dd></dl></details>
+        <details><summary>Privacy boundaries in code and rules</summary><dl><dt>Why</dt><dd>Anything shared is built from an allowlist and validated, and private modules can't be imported by the sharing code.</dd><dt>Trade-off</dt><dd>Less detail in anything shared, and more tests.</dd></dl></details>
+        <details><summary>Conservative by default, on-demand when asked</summary><dl><dt>Why</dt><dd>A theme engine and a tension detector made the product feel like it was watching. They were kept as dormant code; the coach now recognises recurring concerns when asked.</dd><dt>Trade-off</dt><dd>Fewer automatic insights, and a calmer product.</dd></dl></details>
+      </div>
+    </section>
+
+    <!-- CHALLENGES -->
+    <section class="section" id="tradeoffs" aria-labelledby="tradeoffs-title">
+      <p class="kicker">10 · Challenges &amp; trade-offs</p>
+      <h2 id="tradeoffs-title">Honest tensions</h2>
+      <ul class="tensions">
+        <li><span>Simplicity</span><i aria-hidden="true"></i><span>Intelligence</span><p>Built analysis engines, then switched most of them off.</p></li>
+        <li><span>Personalisation</span><i aria-hidden="true"></i><span>Privacy</span><p>Send what's relevant, not what's available.</p></li>
+        <li><span>AI flexibility</span><i aria-hidden="true"></i><span>Correctness</span><p>Anything that must be right is code; model output is validated.</p></li>
+        <li><span>Feature richness</span><i aria-hidden="true"></i><span>Cognitive load</span><p>Every feature had to fit an existing question.</p></li>
+        <li><span>Background analysis</span><i aria-hidden="true"></i><span>Unnecessary AI</span><p>Many days the scheduled job makes no AI call, by design.</p></li>
+      </ul>
+      <p class="small">Known limits: embedding cold starts take seconds; a burst of AI requests may have to wait for the provider's limits; reminders need the app open; calendar events don't recur yet; single-user by design.</p>
+    </section>
+
+    <!-- LEARNED -->
+    <section class="section" id="learned" aria-labelledby="learned-title">
+      <p class="kicker">11 · What I learned</p>
+      <h2 id="learned-title">The hardest work was invisible</h2>
+      <ol class="lessons">
+        <li><h3>Build a product, not a feature list</h3><p>Every screen answers one question. The product improved as it got simpler.</p></li>
+        <li><h3>Design around context</h3><p>The value isn't any single number but the combination: shift, personal day, sleep, what's due, what's coming.</p></li>
+        <li><h3>Know when not to use AI</h3><p>Counting, scheduling and time zones are code problems. AI earns its place in interpretation and language.</p></li>
+        <li><h3>Separate truth from interpretation</h3><p>Keeping facts and model output in different layers, labelled and traceable, makes both safer.</p></li>
+        <li><h3>Adaptivity is careful rules</h3><p>Plans that lower the bar on hard days. Context that matches the question. Budgets that reserve and settle.</p></li>
+        <li><h3>Sophistication should disappear</h3><p>Success was measured by how little the user has to think.</p></li>
+      </ol>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="closing" aria-labelledby="closing-title">
+      <h2 id="closing-title">Habitty is what happens when a habit tracker is asked to understand a real life.</h2>
+      <p>I designed and built it end to end: the product model, the visual language, the shift-aware planning engine, the data model, the AI architecture and its safeguards, and the tests that keep it honest. It is intelligent where intelligence helps, deterministic where correctness matters, and quiet everywhere else.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Habitty case study. Static page; no tracking, no personal data. Diagrams and illustrations are recreations, not screenshots.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

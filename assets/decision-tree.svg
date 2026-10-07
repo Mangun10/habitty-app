@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" role="img" aria-labelledby="t d" font-family="Geist, 'Segoe UI', system-ui, sans-serif">
+  <title id="t">The Decision Tree, abstractly</title>
+  <desc id="d">A worry leads to reasoning, a decision, an action and a note on what would count as new information. When the same worry returns with no new information, the decision stands and no new analysis is made.</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#a59a93"/></marker></defs>
+  <rect width="640" height="560" rx="24" fill="#2f2b2f"/>
+  <g font-size="13" fill="#c8beb6">
+    <rect x="40" y="40" width="300" height="64" rx="16" fill="#363039" stroke="#544a57"/>
+    <text x="62" y="66" fill="#a59a93" font-size="11" letter-spacing="2">WORRY</text><text x="62" y="88" fill="#e8ddea" font-family="Newsreader, Georgia, serif" font-size="16">"I'm worried I'm falling behind."</text>
+    <path d="M190 104v24" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+    <rect x="40" y="134" width="300" height="64" rx="16" fill="#383338"/>
+    <text x="62" y="160" fill="#a59a93" font-size="11" letter-spacing="2">REASONING</text><text x="62" y="182">why it exists, what actually matters</text>
+    <path d="M190 198v24" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+    <rect x="40" y="228" width="300" height="64" rx="16" fill="#383338"/>
+    <text x="62" y="254" fill="#a59a93" font-size="11" letter-spacing="2">DECISION</text><text x="62" y="276">what I've decided to do about it</text>
+    <path d="M190 292v24" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+    <rect x="40" y="322" width="300" height="64" rx="16" fill="#2f3a33" stroke="#4a5d50"/>
+    <text x="62" y="348" fill="#a59a93" font-size="11" letter-spacing="2">ACTION</text><text x="62" y="370" fill="#d8e9dd">the behaviour that follows</text>
+    <path d="M190 386v24" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+    <rect x="40" y="416" width="300" height="64" rx="16" fill="#3c352c" stroke="#e2c095" stroke-opacity=".5"/>
+    <text x="62" y="442" fill="#a59a93" font-size="11" letter-spacing="2">RECONSIDER IF</text><text x="62" y="464" fill="#e2c095">"What would count as new information?"</text>
+  </g>
+  <!-- returning worry -->
+  <rect x="380" y="40" width="220" height="86" rx="16" fill="#363039" stroke="#544a57" stroke-dasharray="4 4"/>
+  <text x="402" y="66" fill="#a59a93" font-size="11" letter-spacing="2">LATER, SAME WORRY</text>
+  <text x="402" y="90" fill="#e8ddea" font-size="14.5" font-family="Newsreader, Georgia, serif">different words,</text>
+  <text x="402" y="110" fill="#e8ddea" font-size="14.5" font-family="Newsreader, Georgia, serif">same meaning</text>
+  <path d="M490 126v40" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="500" y="152" fill="#a59a93" font-size="11.5">found by meaning</text>
+  <rect x="380" y="172" width="220" height="64" rx="16" fill="#383338"/>
+  <text x="490" y="210" text-anchor="middle" fill="#ece5de" font-size="14">Has anything changed?</text>
+  <path d="M440 236 L420 286" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+  <path d="M540 236 L560 286" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="370" y="294" width="112" height="112" rx="16" fill="#3d3234" stroke="#d6b3aa" stroke-opacity=".6"/>
+  <text x="426" y="324" text-anchor="middle" fill="#d6b3aa" font-size="12.5" font-weight="600">Nothing</text>
+  <text x="426" y="346" text-anchor="middle" fill="#c8beb6" font-size="12">the decision</text>
+  <text x="426" y="364" text-anchor="middle" fill="#c8beb6" font-size="12">stands ·</text>
+  <text x="426" y="382" text-anchor="middle" fill="#c8beb6" font-size="12">no AI call</text>
+  <rect x="498" y="294" width="112" height="112" rx="16" fill="#383338"/>
+  <text x="554" y="324" text-anchor="middle" fill="#ece5de" font-size="12.5" font-weight="600">Something</text>
+  <text x="554" y="346" text-anchor="middle" fill="#c8beb6" font-size="12">reconsider ·</text>
+  <text x="554" y="364" text-anchor="middle" fill="#c8beb6" font-size="12">old version</text>
+  <text x="554" y="382" text-anchor="middle" fill="#c8beb6" font-size="12">kept</text>
+  <text x="380" y="458" fill="#ece5de" font-size="20" font-family="Newsreader, Georgia, serif">No new information</text>
+  <text x="380" y="486" fill="#ece5de" font-size="20" font-family="Newsreader, Georgia, serif">→ no new analysis.</text>
+  <text x="40" y="526" fill="#a59a93" font-size="12">Illustrative example — not real personal content.</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 860" role="img" aria-labelledby="t d" font-family="Geist, 'Segoe UI', system-ui, sans-serif">
+  <title id="t">Habitty AI architecture</title>
+  <desc id="d">Five kinds of context flow into a deterministic context builder, then retrieval, then either interactive AI on Groq or background AI on Gemini, then validation, producing personalised guidance.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#a59a93"/></marker>
+  </defs>
+  <rect width="640" height="860" rx="24" fill="#2f2b2f"/>
+  <text x="32" y="46" fill="#a59a93" font-size="12" letter-spacing="2">CONTEXT</text>
+  <g font-size="14" fill="#ece5de">
+    <rect x="32" y="62" width="180" height="52" rx="14" fill="#30343c" stroke="#474e5c"/><text x="122" y="93" text-anchor="middle" fill="#dfe4ee">Current situation</text>
+    <rect x="230" y="62" width="180" height="52" rx="14" fill="#2f3a33" stroke="#4a5d50"/><text x="320" y="93" text-anchor="middle" fill="#d8e9dd">Personal data</text>
+    <rect x="428" y="62" width="180" height="52" rx="14" fill="#363039" stroke="#544a57"/><text x="518" y="93" text-anchor="middle" fill="#e8ddea">Goals &amp; values</text>
+    <rect x="131" y="128" width="180" height="52" rx="14" fill="#313733" stroke="#465049"/><text x="221" y="159" text-anchor="middle" fill="#dbe5de">Historical patterns</text>
+    <rect x="329" y="128" width="180" height="52" rx="14" fill="#3c352c" stroke="#e2c095" stroke-opacity=".5"/><text x="419" y="159" text-anchor="middle" fill="#e2c095">Future events</text>
+  </g>
+  <path d="M320 186v34" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="120" y="228" width="400" height="74" rx="18" fill="#383338" stroke="rgba(236,229,222,.18)"/>
+  <text x="320" y="258" text-anchor="middle" fill="#ece5de" font-size="17" font-family="Newsreader, Georgia, serif">Context builder</text>
+  <text x="320" y="282" text-anchor="middle" fill="#a59a93" font-size="12.5">deterministic · relevance-gated · token-budgeted</text>
+  <path d="M320 308v34" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="120" y="350" width="400" height="74" rx="18" fill="#383338" stroke="rgba(236,229,222,.18)"/>
+  <text x="320" y="380" text-anchor="middle" fill="#ece5de" font-size="17" font-family="Newsreader, Georgia, serif">Retrieval</text>
+  <text x="320" y="404" text-anchor="middle" fill="#a59a93" font-size="12.5">local embeddings over the user's own words · curated evidence</text>
+  <path d="M320 430 L200 474" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+  <path d="M320 430 L440 474" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="44" y="482" width="264" height="116" rx="18" fill="#3d3234" stroke="#d6b3aa" stroke-opacity=".6"/>
+  <text x="176" y="512" text-anchor="middle" fill="#a59a93" font-size="11" letter-spacing="2">INTERACTIVE</text>
+  <text x="176" y="540" text-anchor="middle" fill="#ece5de" font-size="18" font-family="Newsreader, Georgia, serif">Groq</text>
+  <text x="176" y="564" text-anchor="middle" fill="#c8beb6" font-size="12.5">coach · decisions · preparation</text>
+  <text x="176" y="583" text-anchor="middle" fill="#c8beb6" font-size="12.5">only when the user asks</text>
+  <rect x="332" y="482" width="264" height="116" rx="18" fill="#30343c" stroke="#474e5c"/>
+  <text x="464" y="512" text-anchor="middle" fill="#a59a93" font-size="11" letter-spacing="2">BACKGROUND</text>
+  <text x="464" y="540" text-anchor="middle" fill="#ece5de" font-size="18" font-family="Newsreader, Georgia, serif">Gemini</text>
+  <text x="464" y="564" text-anchor="middle" fill="#c8beb6" font-size="12.5">weekly patterns · deviations</text>
+  <text x="464" y="583" text-anchor="middle" fill="#c8beb6" font-size="12.5">scheduled, conservative</text>
+  <path d="M176 604 L300 648" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+  <path d="M464 604 L340 648" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="120" y="656" width="400" height="74" rx="18" fill="#383338" stroke="rgba(236,229,222,.18)"/>
+  <text x="320" y="686" text-anchor="middle" fill="#ece5de" font-size="17" font-family="Newsreader, Georgia, serif">Validation</text>
+  <text x="320" y="710" text-anchor="middle" fill="#a59a93" font-size="12.5">schema · fact vs. inference labels · no causal or diagnostic claims</text>
+  <path d="M320 736v34" stroke="#a59a93" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="160" y="778" width="320" height="56" rx="28" fill="#d6b3aa"/>
+  <text x="320" y="812" text-anchor="middle" fill="#2a2224" font-size="16" font-weight="600">Personalised guidance</text>
+</svg>
